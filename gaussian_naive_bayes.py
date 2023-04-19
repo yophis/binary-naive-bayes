@@ -23,6 +23,7 @@ class GaussianNaiveBayes:
 
     def predict(self, X, thresh=0.0):
         assert self.trained, 'The model has to be trained via fit method first.'
+        assert X.shape[1] == self.means1.shape[0], 'The input shape mismatch the trained parameters.'
 
         X = np.array(X)
         result = np.array(np.log(self.prior1) - np.log(self.prior0)).repeat(X.shape[0])
